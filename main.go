@@ -3,6 +3,7 @@ package main
 import (
 	"ProjectSavePassword/config"
 	"ProjectSavePassword/endpoint"
+	"fmt"
 )
 
 func main() {
@@ -11,4 +12,5 @@ func main() {
 		panic(err)
 	}
 	endpoint.StartEndpoint()
+	fmt.Println("END")
 }

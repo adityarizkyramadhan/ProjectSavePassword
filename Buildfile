@@ -1,1 +1,1 @@
-build: go build -o bin/application main.go
+build: go build -o bin/ProjectSavePassword main.go
