@@ -2,6 +2,7 @@ package main
 
 import (
 	"ProjectSavePassword/config"
+	"ProjectSavePassword/endpoint"
 )
 
 func main() {
@@ -9,4 +10,5 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
+	endpoint.StartEndpoint()
 }

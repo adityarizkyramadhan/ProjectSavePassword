@@ -7,7 +7,7 @@ import (
 )
 
 func GenerateAuthToken(id uint) (string, error) {
-	token := jwt.NewWithClaims(jwt.SigningMethodHS512, jwt.MapClaims{
+	token := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
 		"id":  id,
 		"exp": time.Now().Add(time.Minute * 10).Unix(),
 	})
