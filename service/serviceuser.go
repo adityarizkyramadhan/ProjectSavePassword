@@ -26,9 +26,10 @@ func RegisterUser(Username string, Password string) (response.RegisterReturn, er
 		return data, err
 	}
 	data = response.RegisterReturn{
-		ID:       body.ID,
-		Username: Username,
-		Token:    token,
+		CreatedAt: body.CreatedAt.GoString(),
+		ID:        body.ID,
+		Username:  Username,
+		Token:     token,
 	}
 	return data, nil
 }
@@ -48,9 +49,10 @@ func LoginUser(username string, password string) (response.RegisterReturn, error
 		return data, err
 	}
 	data = response.RegisterReturn{
-		ID:       respon.ID,
-		Username: username,
-		Token:    token,
+		CreatedAt: respon.CreatedAt.GoString(),
+		ID:        respon.ID,
+		Username:  username,
+		Token:     token,
 	}
 	return data, nil
 }
