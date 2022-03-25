@@ -15,5 +15,5 @@ func StartEndpoint() {
 	r.POST("/register", handler.RegisterUser)
 	r.POST("/adddata", middleware.MiddlewareJWT(), handler.AddData)
 	r.GET("/seedata", middleware.MiddlewareJWT(), handler.SearchData)
-	r.Run(":5000")
+	r.Run(":8080")
 }
