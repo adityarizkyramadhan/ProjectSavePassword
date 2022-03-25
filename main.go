@@ -24,6 +24,6 @@ func main() {
 	r.POST("/adddata", middleware.MiddlewareJWT(), handler.AddData)
 	r.GET("/seedata", middleware.MiddlewareJWT(), handler.SearchData)
 	// port := fmt.Sprintf(":%d", os.Getenv("PORT"))
-	r.Run(":59030")
+	r.Run()
 
 }
