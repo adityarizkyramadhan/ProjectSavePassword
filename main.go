@@ -2,8 +2,13 @@ package main
 
 import (
 	"ProjectSavePassword/config"
-	"ProjectSavePassword/endpoint"
+	"ProjectSavePassword/handler"
+	"ProjectSavePassword/middleware"
 	"fmt"
+	"os"
+
+	"github.com/gin-contrib/cors"
+	"github.com/gin-gonic/gin"
 )
 
 func main() {
@@ -11,6 +16,16 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	endpoint.StartEndpoint()
-	fmt.Println("END")
+	r := gin.Default()
+	r.Use(cors.Default())
+	r.GET("/", func(c *gin.Context) {
+		c.JSON(200, gin.H{"Content": "Hello World"})
+	})
+	r.POST("/login", handler.LoginUser)
+	r.POST("/register", handler.RegisterUser)
+	r.POST("/adddata", middleware.MiddlewareJWT(), handler.AddData)
+	r.GET("/seedata", middleware.MiddlewareJWT(), handler.SearchData)
+	port := fmt.Sprintf(":%d", os.Getenv("PORT"))
+	r.Run(port)
+
 }
