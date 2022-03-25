@@ -1,1 +1,1 @@
-web: bin/ProjectSavePassword scale web=0 worker=1
+web: bin/ProjectSavePassword
