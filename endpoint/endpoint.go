@@ -3,8 +3,6 @@ package endpoint
 import (
 	"ProjectSavePassword/handler"
 	"ProjectSavePassword/middleware"
-	"fmt"
-	"os"
 
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
@@ -17,6 +15,6 @@ func StartEndpoint() {
 	r.POST("/register", handler.RegisterUser)
 	r.POST("/adddata", middleware.MiddlewareJWT(), handler.AddData)
 	r.GET("/seedata", middleware.MiddlewareJWT(), handler.SearchData)
-	port := fmt.Sprintf(":%d", os.Getenv("PORT"))
-	r.Run(port)
+	//port := fmt.Sprintf(":%d", os.Getenv("PORT"))
+	r.Run(":48840")
 }
