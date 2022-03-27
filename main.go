@@ -5,6 +5,7 @@ import (
 	"ProjectSavePassword/handler"
 	"ProjectSavePassword/middleware"
 
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 )
 
@@ -14,7 +15,13 @@ func main() {
 		panic(err)
 	}
 	r := gin.Default()
-	r.Use()
+	r.Use(cors.New(cors.Config{
+		AllowOrigins:     []string{"http://localhost:3000"},
+		AllowMethods:     []string{"GET", "POST", "PUT", "DELETE"},
+		AllowHeaders:     []string{"Origin", "Content-Type", "Authorization"},
+		ExposeHeaders:    []string{"Content-Length"},
+		AllowCredentials: true,
+	}))
 	r.GET("/", func(c *gin.Context) {
 		c.JSON(200, gin.H{"Content": "Hello World"})
 	})
@@ -24,4 +31,5 @@ func main() {
 	r.GET("/seedata", middleware.MiddlewareJWT(), handler.SearchData)
 	// port := fmt.Sprintf(":%d", os.Getenv("PORT"))
 	r.Run()
+
 }
