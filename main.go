@@ -5,7 +5,6 @@ import (
 	"ProjectSavePassword/handler"
 	"ProjectSavePassword/middleware"
 
-	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 )
 
@@ -15,7 +14,7 @@ func main() {
 		panic(err)
 	}
 	r := gin.Default()
-	r.Use(cors.Default())
+	r.Use()
 	r.GET("/", func(c *gin.Context) {
 		c.JSON(200, gin.H{"Content": "Hello World"})
 	})
